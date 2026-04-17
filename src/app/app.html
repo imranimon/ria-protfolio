@@ -1,0 +1,184 @@
+<div class="page-shell">
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar reveal reveal-1">
+    <a class="brand" href="#home" aria-label="Go to top">
+      <span class="brand-mark">NR</span>
+      <span class="brand-copy">
+        <strong>Nashiwa Reza</strong>
+        <span>Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="nav">
+      @for (item of navItems; track item.label) {
+        <a [href]="item.href">{{ item.label }}</a>
+      }
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy reveal reveal-1">
+        <p class="eyebrow">Software engineer based in Essen, Germany</p>
+        <h1>Building calm, useful digital tools with a thoughtful modern touch.</h1>
+        <p class="intro">
+          I work across automation, internal platforms, and web experiences, blending structure, clarity, and
+          collaboration to create software that feels both reliable and human.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:nashiwa.reza@gmail.com">Start a conversation</a>
+          <a class="button button-secondary" href="#experience">See experience</a>
+        </div>
+
+        <div class="pill-row" aria-label="Core capabilities">
+          @for (pill of capabilityPills; track pill) {
+            <span>{{ pill }}</span>
+          }
+        </div>
+      </div>
+
+      <aside class="hero-panel reveal reveal-2">
+        <div class="panel-card status-card">
+          <p class="panel-label">Current focus</p>
+          <h2>Automation, internal tools, and better team workflows.</h2>
+          <p>
+            Designing systems that reduce manual work, improve handoffs, and make day-to-day processes easier for the people using them.
+          </p>
+        </div>
+
+        <div class="panel-card note-card">
+          <p class="panel-label">Approach</p>
+          <p>
+            Clean structure, softer color, and clear communication. A portfolio should feel polished, but still approachable.
+          </p>
+        </div>
+
+        <div class="facts-grid">
+          @for (fact of quickFacts; track fact.label) {
+            <article class="panel-card fact-card">
+              <p class="fact-value">{{ fact.value }}</p>
+              <p class="fact-label">{{ fact.label }}</p>
+              <p class="fact-detail">{{ fact.detail }}</p>
+            </article>
+          }
+        </div>
+      </aside>
+    </section>
+
+    <section class="section section-experience" id="experience">
+      <div class="section-heading reveal reveal-2">
+        <p class="section-kicker">Selected experience</p>
+        <h2>Experience shaped by data, systems, and practical delivery.</h2>
+      </div>
+
+      <div class="timeline">
+        @for (item of experiences; track item.company) {
+          <article class="experience-card reveal reveal-3">
+            <div class="experience-meta">
+              <p class="period">{{ item.period }}</p>
+              <p class="location">{{ item.location }}</p>
+            </div>
+
+            <div class="experience-content">
+              <div class="experience-heading">
+                <h3>{{ item.role }}</h3>
+                <p>{{ item.company }}</p>
+              </div>
+
+              <p class="experience-summary">{{ item.summary }}</p>
+
+              <ul>
+                @for (achievement of item.achievements; track achievement) {
+                  <li>{{ achievement }}</li>
+                }
+              </ul>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section insight-grid" id="skills">
+      <article class="profile-card reveal reveal-2" id="about">
+        <p class="section-kicker">Profile</p>
+        <h2>Technical thinking with strong operational empathy.</h2>
+
+        <div class="profile-points">
+          @for (point of profilePoints; track point) {
+            <p>{{ point }}</p>
+          }
+        </div>
+      </article>
+
+      <article class="skills-card reveal reveal-3">
+        <p class="section-kicker">Capabilities</p>
+        <h2>Tools, systems, and delivery strengths.</h2>
+
+        <div class="skills-groups">
+          @for (group of skillGroups; track group.title) {
+            <section>
+              <h3>{{ group.title }}</h3>
+              <div class="chip-group">
+                @for (item of group.items; track item) {
+                  <span>{{ item }}</span>
+                }
+              </div>
+            </section>
+          }
+        </div>
+      </article>
+    </section>
+
+    <section class="section details-grid">
+      <article class="detail-card reveal reveal-2">
+        <p class="section-kicker">Education</p>
+        <h2>{{ education.degree }}</h2>
+        <p class="detail-title">{{ education.institution }} · {{ education.location }}</p>
+        <p>{{ education.date }}</p>
+        <p>{{ education.focus }}</p>
+        <p class="detail-copy">{{ education.coursework }}</p>
+      </article>
+
+      <article class="detail-card reveal reveal-3">
+        <p class="section-kicker">Languages</p>
+        <h2>Comfortable across teams and cultures.</h2>
+        <div class="stacked-list">
+          @for (language of languages; track language) {
+            <p>{{ language }}</p>
+          }
+        </div>
+      </article>
+
+      <article class="detail-card reveal reveal-4">
+        <p class="section-kicker">Leadership</p>
+        <h2>{{ volunteer.role }}</h2>
+        <p class="detail-title">{{ volunteer.organization }} · {{ volunteer.location }}</p>
+        <p>{{ volunteer.period }}</p>
+        <div class="stacked-list">
+          @for (item of volunteer.items; track item) {
+            <p>{{ item }}</p>
+          }
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer reveal reveal-4" id="contact">
+    <div>
+      <p class="section-kicker">Contact</p>
+      <h2>Open to thoughtful teams, meaningful products, and software work with real impact.</h2>
+    </div>
+
+    <div class="contact-list">
+      @for (link of contactLinks; track link.label) {
+        <a [href]="link.href" target="_blank" rel="noopener">
+          <span>{{ link.label }}</span>
+          <strong>{{ link.value }}</strong>
+        </a>
+      }
+    </div>
+  </footer>
+</div>

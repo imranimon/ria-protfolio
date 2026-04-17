@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at top, rgba(248, 206, 214, 0.45), transparent 24%),
+    linear-gradient(180deg, #fff9f7 0%, #fffdfc 50%, #fdf5f7 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(rgba(205, 177, 187, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(205, 177, 187, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at top, rgba(248, 206, 214, 0.5), transparent 24%),
+    linear-gradient(180deg, #fff9f7 0%, #fffdfc 46%, #fdf5f7 100%);
+  background-size:
+    26px 26px,
+    26px 26px,
+    100% 100%,
+    100% 100%;
+  color: #2d2332;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
