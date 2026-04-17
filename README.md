@@ -1,59 +1,114 @@
-# RiaPortfolio
+# Ria Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+A modern single-page software engineering portfolio built with Angular.
 
-## Development server
+## Live Website
 
-To start a local development server, run:
+[https://nashiwa-reza.netlify.app/](https://nashiwa-reza.netlify.app/)
 
-```bash
-ng serve
-```
+## Overview
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+This project is a personal portfolio website for Nashiwa Reza. It is designed as a clean, modern, responsive single-page experience that highlights professional experience, technical skills, education, and contact information.
 
-## Code scaffolding
+The site was built from resume content in the `docs` folder and shaped into a portfolio presentation suitable for web sharing and recruiter review.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Features
 
-```bash
-ng generate component component-name
-```
+- Responsive single-page portfolio layout
+- Modern Angular 21 setup
+- Soft, polished visual design with subtle motion
+- Experience timeline and skills sections
+- Contact links for email, LinkedIn, and GitHub
+- Production-ready static build for Netlify deployment
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Tech Stack
 
-```bash
-ng generate --help
-```
+- Angular 21
+- TypeScript
+- SCSS
+- Angular CLI
+- Vitest
 
-## Building
+## Getting Started
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Install dependencies:
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Start the local development server:
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Then open:
 
-## Additional Resources
+```bash
+http://localhost:4200/
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+The production files are generated in:
+
+```bash
+dist/ria-portfolio/browser
+```
+
+## Testing
+
+Run unit tests:
+
+```bash
+npm test
+```
+
+## Deployment
+
+This project is deployed on Netlify.
+
+For manual drag-and-drop deployment, upload the contents of:
+
+```bash
+dist/ria-portfolio/browser
+```
+
+## Project Structure
+
+```text
+src/
+  app/
+    app.ts
+    app.html
+    app.scss
+  index.html
+  main.ts
+  styles.scss
+
+public/
+docs/
+```
+
+## Content Source
+
+The initial portfolio content was derived from the resume PDF located in:
+
+```text
+docs/Lebenslauf_Nashiwa.pdf
+```
+
+## Author
+
+Nashiwa Reza
+
+- Portfolio: [https://nashiwa-reza.netlify.app/](https://nashiwa-reza.netlify.app/)
+- LinkedIn: [https://www.linkedin.com/in/nashiwa-reza/](https://www.linkedin.com/in/nashiwa-reza/)
+- GitHub: [https://github.com/nashiwa](https://github.com/nashiwa)
