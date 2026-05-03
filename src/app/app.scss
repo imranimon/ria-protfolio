@@ -1094,6 +1094,14 @@ a:focus-visible,
     padding: 24px;
   }
 
+  .hero-copy {
+    order: 2;
+  }
+
+  .hero-console {
+    order: 1;
+  }
+
   .hero h1 {
     max-width: none;
     font-size: clamp(2.35rem, 11vw, 3.35rem);
