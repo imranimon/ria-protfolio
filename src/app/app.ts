@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
 
-type ExperienceItem = {
-  company: string;
-  role: string;
-  location: string;
-  period: string;
-  summary: string;
-  achievements: string[];
+type NavItem = {
+  label: string;
+  href: string;
+};
+
+type ActionLink = {
+  label: string;
+  href: string;
+  variant: 'primary' | 'secondary';
+};
+
+type CvDownload = {
+  label: string;
+  language: string;
+  href: string;
+};
+
+type Metric = {
+  value: string;
+  label: string;
+};
+
+type Capability = {
+  label: string;
+  detail: string;
+  level: string;
 };
 
 type SkillGroup = {
@@ -14,10 +33,35 @@ type SkillGroup = {
   items: string[];
 };
 
-type QuickFact = {
-  value: string;
+type Project = {
+  title: string;
+  period: string;
+  category: string;
+  description: string;
+  stack: string[];
+  link?: string;
+};
+
+type ExperienceItem = {
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  summary: string;
+  impact: string;
+  focus: string[];
+  theme: 'current' | 'systems' | 'data' | 'research';
+};
+
+type Service = {
+  title: string;
+  description: string;
+};
+
+type ContactLink = {
   label: string;
-  detail: string;
+  value: string;
+  href: string;
 };
 
 @Component({
@@ -27,44 +71,87 @@ type QuickFact = {
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly navItems = [
-    { label: 'Work', href: '#experience' },
+  protected readonly navItems: NavItem[] = [
+    { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
-    { label: 'Profile', href: '#about' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ];
 
-  protected readonly quickFacts: QuickFact[] = [
+  protected readonly heroActions: ActionLink[] = [
+    { label: 'View Work', href: '#experience', variant: 'primary' },
+    { label: 'Contact Me', href: '#contact', variant: 'secondary' },
+  ];
+
+  protected readonly cvDownloads: CvDownload[] = [
+    { label: 'English CV', language: 'EN', href: 'nashiwa-reza-cv-en.pdf' },
+    { label: 'German CV', language: 'DE', href: 'nashiwa-reza-cv-de.pdf' },
+  ];
+
+  protected readonly metrics: Metric[] = [
+    { value: 'B.Sc.', label: 'Computer Engineering' },
+    { value: '4', label: 'Industry environments' },
+    { value: 'DE B2 / EN fluent / BN native', label: 'Multilingual collaboration' },
+  ];
+
+  protected readonly capabilities: Capability[] = [
+    { label: 'Frontend', detail: 'Angular, JavaScript, responsive UI', level: '88%' },
+    { label: 'Automation', detail: 'Power Apps, flows, approvals', level: '92%' },
+    { label: 'Full-stack', detail: 'Python, Flask, REST APIs, SQL', level: '78%' },
+    { label: 'Data', detail: 'Power BI, quality checks, reporting', level: '82%' },
+  ];
+
+  protected readonly strengths = [
+    'Frontend and full-stack thinking',
+    'Process automation',
+    'Data-driven digital solutions',
+    'Clear documentation',
+  ];
+
+  protected readonly aboutPoints = [
+    'I am a software engineer with a Computer Engineering background and a practical focus on software engineering, automation, and digital workflows.',
+    'My work combines structured problem solving with strong communication, whether I am shaping a Power Platform solution, supporting data quality, or building web interfaces.',
+    'I enjoy turning unclear operational needs into reliable tools that are easier for teams to use, maintain, and improve.',
+  ];
+
+  protected readonly skillGroups: SkillGroup[] = [
     {
-      value: '4+',
-      label: 'industry roles',
-      detail: 'Hands-on work across energy, automotive, retail, and agritech.',
+      title: 'Frontend & Web',
+      items: ['Angular', 'JavaScript', 'HTML', 'CSS', 'REST APIs'],
     },
     {
-      value: '2025',
-      label: 'current focus',
-      detail: 'Building automation and internal workflow solutions on a data and AI platform.',
+      title: 'Full-Stack & Scripting',
+      items: ['Python', 'Flask', 'AutoIt', 'SQL', 'Docker'],
     },
     {
-      value: 'B.Sc.',
-      label: 'software-focused',
-      detail: 'Computer Engineering graduate with a software engineering concentration.',
+      title: 'Automation & Data',
+      items: ['Power Apps', 'Power Automate', 'Power BI', 'Dataverse', 'SharePoint'],
+    },
+    {
+      title: 'Delivery Tools',
+      items: ['GitHub', 'Jira', 'Confluence', 'SourceTree', 'Documentation'],
     },
   ];
 
-  protected readonly capabilityPills = [
-    'Angular',
-    'Python',
-    'REST APIs',
-    'Power Apps',
-    'Power Automate',
-    'SQL',
-    'Power BI',
-    'Docker',
-    'GitHub',
-    'Jira',
-    'Confluence',
-    'Agile delivery',
+  protected readonly projects: Project[] = [
+    {
+      title: 'Bayesian Network Evaluation Tool',
+      period: 'Sep 2023 - Dec 2023',
+      category: 'Algorithm engineering',
+      description:
+        'Built a Python-based tool for evaluating Bayesian networks more efficiently, using graph algorithms to reduce complexity and compare runtime behavior on larger networks.',
+      stack: ['Python', 'Greedy Degree', 'Fill-In', 'Performance analysis'],
+    },
+    {
+      title: 'Carshare Web Platform',
+      period: 'Oct 2020 - Jan 2021',
+      category: 'Full-stack university project',
+      description:
+        'Designed and implemented a web app for vehicle sharing, including booking flows, vehicle availability, transaction history, and a database schema to support the platform.',
+      stack: ['Python', 'Flask', 'DB2', 'Bootstrap'],
+      link: 'https://github.com/nashiwa/carshare',
+    },
   ];
 
   protected readonly experiences: ExperienceItem[] = [
@@ -74,13 +161,10 @@ export class App {
       location: 'Essen, Germany',
       period: 'Mar 2025 - Present',
       summary:
-        'Designing internal automation and low-code solutions that reduce manual follow-up and improve request handling.',
-      achievements: [
-        'Designed Power Automate flows for request and approval processes.',
-        'Built a Canvas Power App with validation and backend handoff to Dataverse and SharePoint.',
-        'Integrated Microsoft Teams notifications and approval experiences for faster collaboration.',
-        'Worked closely with colleagues on requirements, debugging, and iterative product improvements.',
-      ],
+        'Designing automation and low-code solutions for internal request, approval, and collaboration workflows.',
+      impact: 'Turning manual follow-up into structured request journeys with validation, approvals, and team notifications.',
+      focus: ['Power Automate', 'Canvas Power Apps', 'Dataverse', 'SharePoint', 'Microsoft Teams'],
+      theme: 'current',
     },
     {
       company: 'IAV GmbH',
@@ -88,12 +172,10 @@ export class App {
       location: 'Heimsheim, Germany',
       period: 'Jan 2025 - Feb 2025',
       summary:
-        'Supported infotainment and validation workflows with scripting, device setup, and technical documentation.',
-      achievements: [
-        'Extended existing scripts for ECU and control-unit related processes.',
-        'Supported setup and commissioning of smartphones for test vehicles.',
-        'Maintained and expanded technical knowledge in Confluence.',
-      ],
+        'Supported infotainment validation workflows through scripting, device setup, and technical documentation.',
+      impact: 'Improved technical readiness for validation work through script support, device setup, and shared documentation.',
+      focus: ['ECU processes', 'Script extension', 'Smartphone setup', 'Confluence'],
+      theme: 'systems',
     },
     {
       company: 'ALDI Einkauf SE & Co. oHG',
@@ -101,12 +183,10 @@ export class App {
       location: 'Essen, Germany',
       period: 'Apr 2022 - Nov 2022',
       summary:
-        'Helped digitize and organize operational data while improving data quality and reporting readiness.',
-      achievements: [
-        'Supported digital transformation initiatives through structured data handling in Sievo.',
-        'Improved accuracy through careful data entry, categorization, and validation.',
-        'Worked with Excel, Word, and Power BI to manage business-critical datasets.',
-      ],
+        'Helped digitize, structure, and validate operational datasets for cleaner reporting and transformation work.',
+      impact: 'Supported digital transformation by organizing operational data into cleaner, more reliable business information.',
+      focus: ['Sievo', 'Data quality', 'Excel', 'Power BI'],
+      theme: 'data',
     },
     {
       company: 'Mavuno Technology GmbH',
@@ -114,74 +194,55 @@ export class App {
       location: 'Berlin, Germany',
       period: 'Apr 2021 - Jul 2021',
       summary:
-        'Applied data science and machine learning techniques to agriculture-focused products and insights.',
-      achievements: [
-        'Used satellite imagery and machine learning to support feature engineering and model training.',
-        'Cleaned and analyzed datasets with Python for better agricultural decision-making.',
-        'Contributed to data-driven tools aimed at improving outcomes for smallholder farmers.',
-      ],
+        'Applied data science methods to agriculture-focused insights using satellite imagery and machine learning.',
+      impact: 'Used data cleaning, feature engineering, and model support to help make agricultural insights more actionable.',
+      focus: ['Python', 'Remote sensing', 'Machine learning', 'Data cleaning'],
+      theme: 'research',
     },
   ];
 
-  protected readonly skillGroups: SkillGroup[] = [
+  protected readonly services: Service[] = [
     {
-      title: 'Engineering',
-      items: ['Angular', 'JavaScript', 'HTML/CSS', 'Python (Flask)', 'AutoIt', 'REST APIs'],
+      title: 'Build clear web interfaces',
+      description:
+        'Create responsive Angular and web experiences that present complex information in a clean, usable way.',
     },
     {
-      title: 'Automation & Data',
-      items: [
-        'Power Platform',
-        'Power Apps (Canvas)',
-        'Power Automate',
-        'Power BI',
-        'SQL',
-        'Dataverse',
-        'SharePoint',
-      ],
+      title: 'Automate business workflows',
+      description:
+        'Translate repeated manual processes into practical flows, forms, approvals, and team notifications.',
     },
     {
-      title: 'Delivery Stack',
-      items: ['GitHub', 'Docker', 'Jira', 'Confluence', 'SourceTree', 'Documentation'],
+      title: 'Connect data and decisions',
+      description:
+        'Organize data, improve quality, and support reporting workflows with SQL, Power BI, and structured documentation.',
     },
   ];
 
-  protected readonly profilePoints = [
-    'Computer Engineering graduate with a focus on software engineering.',
-    'Strong blend of structured problem solving, communication, and cross-team collaboration.',
-    'Experience delivering automation, data analysis, documentation, and internal digital products.',
-    'Comfortable in agile environments with a quality-first and team-oriented mindset.',
-  ];
-
-  protected readonly education = {
-    institution: 'University of Duisburg-Essen',
-    location: 'Duisburg, Germany',
-    degree: 'Bachelor of Science in Computer Engineering',
-    focus: 'Focus: Software Engineering',
-    date: 'Graduated Feb 2024',
-    coursework:
-      'Data Structures and Algorithms, Software Engineering, Database Management Systems, Logic Design, Digital Systems, Mathematics, and Physics.',
-  };
-
-  protected readonly languages = [
-    'German (B2, professional communication)',
-    'English (fluent)',
-    'Bengali (native)',
+  protected readonly education = [
+    {
+      degree: 'Master of Science in Web Engineering',
+      institution: 'Technical University of Chemnitz',
+      location: 'Chemnitz, Germany',
+      date: 'Present',
+      focus: 'Software Engineering, Web Technologies, Databases, Cloud and Distributed Systems',
+    },
+    {
+      degree: 'Bachelor of Science in Computer Engineering',
+      institution: 'University of Duisburg-Essen',
+      location: 'Duisburg, Germany',
+      date: 'Graduated February 2024',
+      focus: 'Focus: Software Engineering',
+    },
   ];
 
   protected readonly volunteer = {
-    organization: 'Red Crescent Society',
     role: 'Volunteer Leader',
-    location: 'Bogra, Bangladesh',
+    organization: 'Red Crescent Society',
     period: 'Jan 2009 - Dec 2020',
-    items: [
-      'Blood donation management',
-      'School friendship initiatives',
-      'Event planning and coordination for community projects',
-    ],
   };
 
-  protected readonly contactLinks = [
+  protected readonly contactLinks: ContactLink[] = [
     { label: 'Email', value: 'nashiwa.reza@gmail.com', href: 'mailto:nashiwa.reza@gmail.com' },
     { label: 'LinkedIn', value: 'linkedin.com/in/nashiwa-reza', href: 'https://www.linkedin.com/in/nashiwa-reza/' },
     { label: 'GitHub', value: 'github.com/nashiwa', href: 'https://github.com/nashiwa' },

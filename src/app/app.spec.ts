@@ -18,6 +18,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Building calm, useful digital tools');
+    expect(compiled.querySelector('.eyebrow')?.textContent).toContain('Software engineer based in Germany');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Software that connects people');
   });
 });
